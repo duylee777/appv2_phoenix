@@ -20,6 +20,9 @@
             <h2 class="s-header__title">Về chúng tôi</h2>
         </div>
         <div class="aboutpage-content">
+            {!! $about->detail !!}
+        </div>
+        {{-- <div class="aboutpage-content">
             <h3>Công ty Cổ phần Điện Tử và Công nghệ Phượng Hoàng, tiền thân là Công ty Cổ phần Điện Tử Phượng Hoàng (Công ty Phượng Hoàng)</h3>
             <div class="aboutpage-content-paragraph">
                 <p>
@@ -51,6 +54,6 @@
                     <p>Trải qua thời gian, thử thách và biến động của thị trường,  đội ngũ lãnh đạo và cán bộ nhân viên đã cùng nhau xây dựng nên những giá trị cốt lõi và bản sắc văn hoá riêng, tạo nên tầm vóc mới, sức mạnh mới cho thương hiệu Công ty Phượng Hoàng. Chúng tôi tin tưởng rằng, với sự ủng hộ mạnh mẽ hơn nữa của các Quý khách hàng, đối tác, đội ngũ lãnh đạo và nhân viên, cùng chiến lược hoạt động đúng đắn, Công ty Cổ phần Điện Tử Phượng Hoàng sẽ phát triển ngày một lớn mạnh.</p>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
 @endsection

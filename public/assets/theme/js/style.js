@@ -53,8 +53,15 @@ $('#toggleMenuMobileBtn').click(function(){
 })
 $('.m-product__btn-toggle').click(function(){
     var index = $('.m-product__btn-toggle').index(this);
-    console.log(index)
     $('.m-sub-product-portfolio').eq(index).slideToggle(500);
+})
+
+$('#toggleSupport').click(function(){
+    $('.m-support-toggle').slideToggle(500);
+})
+$('.m-support__btn-toggle').click(function(){
+    var index = $('.m-support__btn-toggle').index(this);
+    $('.m-sub-support-portfolio').eq(index).slideToggle(500);
 })
 
 var maskTop = $('.mask__top').height();

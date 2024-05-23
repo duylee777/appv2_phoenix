@@ -56,6 +56,81 @@
     .header-area {
         display: none;
     }
+
+    .hook_submenu {
+        position: relative;
+    }
+    .hook_submenu-v2 {
+        position: relative;
+    }
+    .hook_submenu:hover .submenu {
+        display: block;
+    }
+    .hook_submenu-v2:hover .submenu-v2 {
+        display: block;
+    }
+    .submenu {
+        position: absolute;
+        display: none;
+        left: 50%;
+        top: 100%;
+        z-index: 10;
+        width: max-content;
+        background: rgba(0,0,0,0.9);
+        border-radius: 0.5rem;
+    }
+    .submenu-v2 {
+        position: absolute;
+        display: none;
+        left: 100%;
+        top: 0;
+        z-index: 10;
+        width: max-content;
+        background: rgba(0,0,0,0.9);
+        border-radius: 0.5rem;
+    }
+    .submenu__link {
+        text-transform: unset;
+        padding: 0.5rem 1rem;
+    }
+    .box__link {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    .box__link span {
+        color: white;
+        cursor: pointer;
+    }
+    .bottom__zero {
+        padding-bottom: 0 !important;
+    }
+    .width__full {
+        width: 100%;
+    }
+    .item__flex {
+        display: flex;
+        justify-content: space-between;
+    }
+    .m-support__btn-toggle {
+        color: var(--bg__grey--light);
+        display: inline-block;
+        width: 2rem;
+        text-align: center;
+        cursor: pointer;
+    }
+    .m-support-toggle {
+        display: none;
+    }
+    .m-support-portfolio {
+        list-style-type: none;
+    }
+    .m-sub-support-portfolio {
+        display: none;
+        list-style-type: none;
+    }
+
+
     @media screen and (max-width: 993px) {
         #header-v2 {
             display: none;
@@ -81,6 +156,7 @@
             padding-right: calc((100% - 1920px) / 2);
         }
     }
+
 </style>
 <section id="v2h_cushion" class=""></section>
 <header>
@@ -98,11 +174,44 @@
                 <div class="v2h_content">
                     <div class="v2h_line1">
                         <nav class="mainmenu v2h_mainmenu">
-                            <a id="show-about" href="{{ route('theme.about') }}" class="mainmenu__link">Giới thiệu</a>
+                            <a href="{{ route('theme.about') }}" class="mainmenu__link">Giới thiệu</a>
                             <a href="{{ route('theme.project') }}" class="mainmenu__link">Dự án</a>
                             <a href="{{ route('theme.news') }}" class="mainmenu__link">Tin tức</a>
                             <a href="{{ route('theme.agency') }}" class="mainmenu__link">Đại lý</a>
-                            <a href="{{ route('theme.support') }}" class="mainmenu__link">Hỗ trợ</a>
+
+                            <div class="hook_submenu">
+                                <div class="box__link">
+                                    <a href="#" class="mainmenu__link">Hỗ trợ</a>
+                                    <span><i class="fa-solid fa-angle-down"></i></span>
+                                </div>
+                                <nav class="submenu">
+                                    <div class="hook_submenu-v2">
+                                        {{-- <a href="#" class="mainmenu__link submenu__link">Hỗ trợ đại lý</a> --}}
+                                        <div class="box__link">
+                                            <a href="#" class="mainmenu__link submenu__link">Hỗ trợ đại lý</a>
+                                            <span><i class="fa-solid fa-angle-right"></i></span>
+                                        </div>
+                                        <nav  class="submenu-v2">
+                                            <a href="" class="mainmenu__link submenu__link">Đăng ký đại lý kinh doanh</a>
+                                            <a href="" class="mainmenu__link submenu__link">Hỗ trợ kỹ thuật</a>
+                                        </nav>
+                                    </div>
+                                    <div class="hook_submenu-v2">
+                                        {{-- <a href="#" class="mainmenu__link submenu__link">Hỗ trợ khách hàng</a> --}}
+                                        <div class="box__link">
+                                            <a href="#" class="mainmenu__link submenu__link">Hỗ trợ khách hàng</a>
+                                            <span><i class="fa-solid fa-angle-right"></i></span>
+                                        </div>
+                                        <nav  class="submenu-v2">
+                                            <a href="" class="mainmenu__link submenu__link">Hỗ trợ tư vấn sản phẩm và dịch vụ</a>
+                                            <a href="" class="mainmenu__link submenu__link">Giải quyết khiếu nại</a>
+                                        </nav>
+                                    </div>
+                                    
+                                    <a href="" class="mainmenu__link submenu__link">Phần mềm hỗ trợ</a>
+                                </nav>
+                            </div>
+                            
                             <a href="{{ route('theme.download') }}" class="mainmenu__link">Tải về</a>
                             <a href="{{ route('theme.contact') }}" class="mainmenu__link">Liên hệ</a>
                         </nav>
@@ -185,11 +294,43 @@
                     </a>
                 </div>
                 <nav class="mainmenu">
-                    <a id="show-about" href="#" class="mainmenu__link">Giới thiệu</a>
+                    <a href="{{ route('theme.about') }}" class="mainmenu__link">Giới thiệu</a>
                     <a href="{{ route('theme.project') }}" class="mainmenu__link">Dự án</a>
                     <a href="{{ route('theme.news') }}" class="mainmenu__link">Tin tức</a>
                     <a href="{{ route('theme.agency') }}" class="mainmenu__link">Đại lý</a>
-                    <a href="{{ route('theme.support') }}" class="mainmenu__link">Hỗ trợ</a>
+                    <div class="hook_submenu">
+                        <div class="box__link">
+                            <a href="#" class="mainmenu__link">Hỗ trợ</a>
+                            <span><i class="fa-solid fa-angle-down"></i></span>
+                        </div>
+                        <nav class="submenu">
+                            <div class="hook_submenu-v2">
+                                {{-- <a href="#" class="mainmenu__link submenu__link">Hỗ trợ đại lý</a> --}}
+                                <div class="box__link">
+                                    <a href="#" class="mainmenu__link submenu__link">Hỗ trợ đại lý</a>
+                                    <span><i class="fa-solid fa-angle-down"></i></span>
+                                </div>
+                                <nav class="submenu-v2">
+                                    <a href="" class="mainmenu__link submenu__link">Đăng ký đại lý kinh doanh</a>
+                                    <a href="" class="mainmenu__link submenu__link">Hỗ trợ kỹ thuật</a>
+                                </nav>
+                            </div>
+                            <div class="hook_submenu-v2">
+                                {{-- <a href="#" class="mainmenu__link submenu__link">Hỗ trợ khách hàng</a> --}}
+                                <div class="box__link">
+                                    <a href="#" class="mainmenu__link submenu__link">Hỗ trợ khách hàng</a>
+                                    <span><i class="fa-solid fa-angle-down"></i></span>
+                                </div>
+                                <nav class="submenu-v2">
+                                    <a href="" class="mainmenu__link submenu__link">Hỗ trợ tư vấn sản phẩm và dịch vụ</a>
+                                    <a href="" class="mainmenu__link submenu__link">Giải quyết khiếu nại</a>
+                                </nav>
+                            </div>
+                            
+                            <a href="" class="mainmenu__link submenu__link">Phần mềm hỗ trợ</a>
+                        </nav>
+                    </div>
+                    {{-- <a href="{{ route('theme.support') }}" class="mainmenu__link">Hỗ trợ</a> --}}
                     <a href="{{ route('theme.download') }}" class="mainmenu__link">Tải về</a>
                     <a href="{{ route('theme.contact') }}" class="mainmenu__link">Liên hệ</a>
                 </nav>
@@ -223,10 +364,9 @@
                             <div class="m-product-portfolio-wrap">
                                 <div class="dropdown_m_wrap">
                                     <div class="dropdown dropdown_m">
-                                    <button class="morewrap__btn dropdown-btn"><i class="fa-solid fa-globe"></i></button>
-                                    <div class="gtranslate_wrapper dropdown-menu"></div>
-            
-                                </div>
+                                        <button class="morewrap__btn dropdown-btn"><i class="fa-solid fa-globe"></i></button>
+                                        <div class="gtranslate_wrapper dropdown-menu"></div>
+                                    </div>
                                 </div>
                                 <button id="toggleMenuMobileBtn"><i class="fa-solid fa-bars-staggered"></i> <span>sản phẩm</span><i class="fa-solid fa-chevron-down"></i></button>
                                 <div class="m-product-portfolio-toggle">
@@ -260,12 +400,73 @@
                                     
                                 </div>
                             </div>
+                            {{-- mobile menu --}}
                             <nav class="m-mainmenu">
                                 <a href="{{ route('theme.about') }}" class="mainmenu__link m-mainmenu__link">Giới thiệu</a>
                                 <a href="{{ route('theme.project') }}" class="mainmenu__link m-mainmenu__link">Dự án</a>
                                 <a href="{{ route('theme.news') }}" class="mainmenu__link m-mainmenu__link">Tin tức</a>
                                 <a href="{{ route('theme.agency') }}" class="mainmenu__link m-mainmenu__link">Đại lý</a>
-                                <a href="{{ route('theme.support') }}" class="mainmenu__link m-mainmenu__link">Hỗ trợ</a>
+                                {{-- <a href="{{ route('theme.support') }}" class="mainmenu__link m-mainmenu__link">Hỗ trợ</a> --}}
+                                {{-- <div class="dropdown_m_wrap bottom__zero">
+                                    <div class="dropdown dropdown_m width__full">
+                                        <a href="#" class="mainmenu__link m-mainmenu__link dropdown-btn item__flex">
+                                            Hỗ trợ 
+                                            <span><i class="fa-solid fa-angle-down"></i></span>
+                                        </a>
+                                        <div class="gtranslate_wrapper dropdown-menu"></div>
+                                    </div>
+                                </div> --}}
+                                <div class="">
+                                    <a id="toggleSupport" class="mainmenu__link m-mainmenu__link dropdown-btn item__flex">
+                                        <span>Hỗ trợ</span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </a>
+                                    <div class="m-support-toggle">
+                                        <ul class="m-support-portfolio">
+                                            <li class="m-product-wrap">
+                                                <div class="m-product">
+                                                    <a class="m-product__link">Hỗ trợ đại lý</a>
+                                                    <span class="m-support__btn-toggle"><i class="fa-solid fa-angle-down"></i></span>
+                                                </div>
+                                                <ul class="m-sub-support-portfolio">
+                                                    <li class="sub-product-wrap">
+                                                        <div class="m-sub-product">
+                                                            <a href="#" class="m-product__link">Đăng ký đại lý kinh doanh</a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="sub-product-wrap">
+                                                        <div class="m-sub-product">
+                                                            <a href="#" class="m-product__link">Hỗ trợ kỹ thuật</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="m-product-wrap">
+                                                <div class="m-product">
+                                                    <a class="m-product__link">Hỗ trợ khách hàng</a>
+                                                    <span class="m-support__btn-toggle"><i class="fa-solid fa-angle-down"></i></span>
+                                                </div>
+                                                <ul class="m-sub-support-portfolio">
+                                                    <li class="sub-product-wrap">
+                                                        <div class="m-sub-product">
+                                                            <a href="#" class="m-product__link">Hỗ trợ tư vấn sản phẩm và dịch vụ</a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="sub-product-wrap">
+                                                        <div class="m-sub-product">
+                                                            <a href="#" class="m-product__link">Giải quyết khiếu nại</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="m-product-wrap">
+                                                <div class="m-product">
+                                                    <a href="#" class="m-product__link">Phần mềm hỗ trợ</a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                                 <a href="{{ route('theme.download') }}" class="mainmenu__link m-mainmenu__link">Tải về</a>
                                 <a href="{{ route('theme.contact') }}" class="mainmenu__link m-mainmenu__link">Liên hệ</a>
                             </nav>

@@ -28,7 +28,8 @@ class HomeController extends Controller
     }
 
     public function about(){
-        return view('theme.about');
+        $about = Post::where('slug', 've-chung-toi')->first();
+        return view('theme.about', compact('about'));
     }
     public function category($slug_category) {
         $dataView = [];
