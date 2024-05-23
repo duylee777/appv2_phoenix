@@ -178,37 +178,37 @@
                             <a href="{{ route('theme.project') }}" class="mainmenu__link">Dự án</a>
                             <a href="{{ route('theme.news') }}" class="mainmenu__link">Tin tức</a>
                             <a href="{{ route('theme.agency') }}" class="mainmenu__link">Đại lý</a>
-
+                            @php 
+                                $spCate = App\Models\Category::where('slug', 'ho-tro')->first(); 
+                                $spChildCates = App\Models\Category::where('is_visible', true)->where('parent_id', $spCate->id)->get();
+                            @endphp
                             <div class="hook_submenu">
                                 <div class="box__link">
                                     <a href="#" class="mainmenu__link">Hỗ trợ</a>
                                     <span><i class="fa-solid fa-angle-down"></i></span>
                                 </div>
                                 <nav class="submenu">
+                                    @foreach($spChildCates as $cate)
                                     <div class="hook_submenu-v2">
-                                        {{-- <a href="#" class="mainmenu__link submenu__link">Hỗ trợ đại lý</a> --}}
                                         <div class="box__link">
-                                            <a href="#" class="mainmenu__link submenu__link">Hỗ trợ đại lý</a>
+                                            @if($cate->slug == 'phan-mem-ho-tro')
+                                            <a href="{{ route('theme.support_software') }}" class="mainmenu__link submenu__link">{{ $cate->name }}</a>
+                                            @else
+                                            <a class="mainmenu__link submenu__link">{{ $cate->name }}</a>
+                                            @endif
+                                            @if(count($cate->childs) != 0)
                                             <span><i class="fa-solid fa-angle-right"></i></span>
+                                            @endif
                                         </div>
-                                        <nav  class="submenu-v2">
-                                            <a href="" class="mainmenu__link submenu__link">Đăng ký đại lý kinh doanh</a>
-                                            <a href="" class="mainmenu__link submenu__link">Hỗ trợ kỹ thuật</a>
+                                        @if(count($cate->childs) != 0)
+                                        <nav class="submenu-v2">
+                                            @foreach($cate->childs as $child)
+                                            <a href="{{ route('theme.support_index', $child->slug) }}" class="mainmenu__link submenu__link">{{ $child->name }}</a>
+                                            @endforeach
                                         </nav>
+                                        @endif
                                     </div>
-                                    <div class="hook_submenu-v2">
-                                        {{-- <a href="#" class="mainmenu__link submenu__link">Hỗ trợ khách hàng</a> --}}
-                                        <div class="box__link">
-                                            <a href="#" class="mainmenu__link submenu__link">Hỗ trợ khách hàng</a>
-                                            <span><i class="fa-solid fa-angle-right"></i></span>
-                                        </div>
-                                        <nav  class="submenu-v2">
-                                            <a href="" class="mainmenu__link submenu__link">Hỗ trợ tư vấn sản phẩm và dịch vụ</a>
-                                            <a href="" class="mainmenu__link submenu__link">Giải quyết khiếu nại</a>
-                                        </nav>
-                                    </div>
-                                    
-                                    <a href="" class="mainmenu__link submenu__link">Phần mềm hỗ trợ</a>
+                                    @endforeach
                                 </nav>
                             </div>
                             
@@ -304,33 +304,29 @@
                             <span><i class="fa-solid fa-angle-down"></i></span>
                         </div>
                         <nav class="submenu">
+                            @foreach($spChildCates as $cate)
                             <div class="hook_submenu-v2">
-                                {{-- <a href="#" class="mainmenu__link submenu__link">Hỗ trợ đại lý</a> --}}
                                 <div class="box__link">
-                                    <a href="#" class="mainmenu__link submenu__link">Hỗ trợ đại lý</a>
-                                    <span><i class="fa-solid fa-angle-down"></i></span>
+                                    @if($cate->slug == 'phan-mem-ho-tro')
+                                    <a href="{{ route('theme.support_software') }}" class="mainmenu__link submenu__link">{{ $cate->name }}</a>
+                                    @else
+                                    <a class="mainmenu__link submenu__link">{{ $cate->name }}</a>
+                                    @endif
+                                    @if(count($cate->childs) != 0)
+                                    <span><i class="fa-solid fa-angle-right"></i></span>
+                                    @endif
                                 </div>
+                                @if(count($cate->childs) != 0)
                                 <nav class="submenu-v2">
-                                    <a href="" class="mainmenu__link submenu__link">Đăng ký đại lý kinh doanh</a>
-                                    <a href="" class="mainmenu__link submenu__link">Hỗ trợ kỹ thuật</a>
+                                    @foreach($cate->childs as $child)
+                                    <a href="{{ route('theme.support_index', $child->slug) }}" class="mainmenu__link submenu__link">{{ $child->name }}</a>
+                                    @endforeach
                                 </nav>
+                                @endif
                             </div>
-                            <div class="hook_submenu-v2">
-                                {{-- <a href="#" class="mainmenu__link submenu__link">Hỗ trợ khách hàng</a> --}}
-                                <div class="box__link">
-                                    <a href="#" class="mainmenu__link submenu__link">Hỗ trợ khách hàng</a>
-                                    <span><i class="fa-solid fa-angle-down"></i></span>
-                                </div>
-                                <nav class="submenu-v2">
-                                    <a href="" class="mainmenu__link submenu__link">Hỗ trợ tư vấn sản phẩm và dịch vụ</a>
-                                    <a href="" class="mainmenu__link submenu__link">Giải quyết khiếu nại</a>
-                                </nav>
-                            </div>
-                            
-                            <a href="" class="mainmenu__link submenu__link">Phần mềm hỗ trợ</a>
+                            @endforeach
                         </nav>
                     </div>
-                    {{-- <a href="{{ route('theme.support') }}" class="mainmenu__link">Hỗ trợ</a> --}}
                     <a href="{{ route('theme.download') }}" class="mainmenu__link">Tải về</a>
                     <a href="{{ route('theme.contact') }}" class="mainmenu__link">Liên hệ</a>
                 </nav>
@@ -406,16 +402,6 @@
                                 <a href="{{ route('theme.project') }}" class="mainmenu__link m-mainmenu__link">Dự án</a>
                                 <a href="{{ route('theme.news') }}" class="mainmenu__link m-mainmenu__link">Tin tức</a>
                                 <a href="{{ route('theme.agency') }}" class="mainmenu__link m-mainmenu__link">Đại lý</a>
-                                {{-- <a href="{{ route('theme.support') }}" class="mainmenu__link m-mainmenu__link">Hỗ trợ</a> --}}
-                                {{-- <div class="dropdown_m_wrap bottom__zero">
-                                    <div class="dropdown dropdown_m width__full">
-                                        <a href="#" class="mainmenu__link m-mainmenu__link dropdown-btn item__flex">
-                                            Hỗ trợ 
-                                            <span><i class="fa-solid fa-angle-down"></i></span>
-                                        </a>
-                                        <div class="gtranslate_wrapper dropdown-menu"></div>
-                                    </div>
-                                </div> --}}
                                 <div class="">
                                     <a id="toggleSupport" class="mainmenu__link m-mainmenu__link dropdown-btn item__flex">
                                         <span>Hỗ trợ</span>
@@ -423,47 +409,31 @@
                                     </a>
                                     <div class="m-support-toggle">
                                         <ul class="m-support-portfolio">
+                                            @foreach($spChildCates as $cate)
                                             <li class="m-product-wrap">
                                                 <div class="m-product">
-                                                    <a class="m-product__link">Hỗ trợ đại lý</a>
+                                                    @if($cate->slug == 'phan-mem-ho-tro')
+                                                    <a href="{{ route('theme.support_software') }}" class="m-product__link">{{ $cate->name }}</a>
+                                                    @else
+                                                    <a class="m-product__link">{{ $cate->name }}</a>
+                                                    @endif
+                                                    @if(count($cate->childs) != 0)
                                                     <span class="m-support__btn-toggle"><i class="fa-solid fa-angle-down"></i></span>
+                                                    @endif
                                                 </div>
+                                                @if(count($cate->childs) != 0)
                                                 <ul class="m-sub-support-portfolio">
+                                                    @foreach($cate->childs as $child)
                                                     <li class="sub-product-wrap">
                                                         <div class="m-sub-product">
-                                                            <a href="#" class="m-product__link">Đăng ký đại lý kinh doanh</a>
+                                                            <a href="{{ route('theme.support_index', $child->slug) }}" class="m-product__link">{{ $child->name }}</a>
                                                         </div>
                                                     </li>
-                                                    <li class="sub-product-wrap">
-                                                        <div class="m-sub-product">
-                                                            <a href="#" class="m-product__link">Hỗ trợ kỹ thuật</a>
-                                                        </div>
-                                                    </li>
+                                                    @endforeach
                                                 </ul>
+                                                @endif
                                             </li>
-                                            <li class="m-product-wrap">
-                                                <div class="m-product">
-                                                    <a class="m-product__link">Hỗ trợ khách hàng</a>
-                                                    <span class="m-support__btn-toggle"><i class="fa-solid fa-angle-down"></i></span>
-                                                </div>
-                                                <ul class="m-sub-support-portfolio">
-                                                    <li class="sub-product-wrap">
-                                                        <div class="m-sub-product">
-                                                            <a href="#" class="m-product__link">Hỗ trợ tư vấn sản phẩm và dịch vụ</a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="sub-product-wrap">
-                                                        <div class="m-sub-product">
-                                                            <a href="#" class="m-product__link">Giải quyết khiếu nại</a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="m-product-wrap">
-                                                <div class="m-product">
-                                                    <a href="#" class="m-product__link">Phần mềm hỗ trợ</a>
-                                                </div>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>

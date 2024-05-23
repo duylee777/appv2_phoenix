@@ -128,7 +128,7 @@ class CategorySeeder extends Seeder
             ],
         ]);
 
-        $ProductCategory = Category::where('slug', 'san-pham')->first();
+        $productCategory = Category::where('slug', 'san-pham')->first();
         DB::table('categories')->insert([
             [
                 'name' => 'Line Array',
@@ -137,7 +137,7 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'line-array',
                 'seo_description' => 'line-array',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
@@ -148,7 +148,7 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'loa-speaker',
                 'seo_description' => 'loa-speaker',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
@@ -159,7 +159,7 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'cong-suat-amplifier',
                 'seo_description' => 'cong-suat-amplifier',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
@@ -170,7 +170,7 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'microphone',
                 'seo_description' => 'microphone',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
@@ -181,7 +181,7 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'vang-mixer',
                 'seo_description' => 'vang-mixer',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
@@ -192,7 +192,7 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'loa-tram-sub',
                 'seo_description' => 'loa-tram-sub',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
@@ -203,7 +203,7 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'quan-ly-nguon-dien',
                 'seo_description' => 'quan-ly-nguon-dien',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
@@ -214,7 +214,7 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'phu-kien-am-thanh',
                 'seo_description' => 'phu-kien-am-thanh',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
@@ -225,7 +225,96 @@ class CategorySeeder extends Seeder
                 'is_visible' => true,
                 'seo_title' => 'dan-loa-karaoke',
                 'seo_description' => 'dan-loa-karaoke',
-                'parent_id' => $ProductCategory->id,
+                'parent_id' => $productCategory->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+        ]);
+
+        $supportCategory = Category::where('slug', 'ho-tro')->first();
+        DB::table('categories')->insert([
+            [
+                'name' => 'Hỗ trợ đại lý',
+                'slug' => 'ho-tro-dai-ly',
+                'description' => 'Hỗ trợ đại lý phân phối sản phẩm của Phoenix',
+                'is_visible' => true,
+                'seo_title' => 'ho-tro-dai-ly',
+                'seo_description' => 'ho-tro-dai-ly',
+                'parent_id' => $supportCategory->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Hỗ trợ khách hàng',
+                'slug' => 'ho-tro-khach-hang',
+                'description' => 'Hỗ trợ khách hàng mua, sử dụng sản phẩm của Phoenix',
+                'is_visible' => true,
+                'seo_title' => 'ho-tro-khach-hang',
+                'seo_description' => 'ho-tro-khach-hang',
+                'parent_id' => $supportCategory->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Phần mềm hỗ trợ',
+                'slug' => 'phan-mem-ho-tro',
+                'description' => 'Phần mềm hỗ trợ cho sản phẩm của Phoenix',
+                'is_visible' => true,
+                'seo_title' => 'phan-mem-ho-tro',
+                'seo_description' => 'phan-mem-ho-tro',
+                'parent_id' => $supportCategory->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+        ]);
+
+        $spAgency = Category::where('slug', 'ho-tro-dai-ly')->first();
+        DB::table('categories')->insert([
+            [
+                'name' => 'Đăng ký đại lý kinh doanh',
+                'slug' => 'dang-ky-dai-ly-kinh-doanh',
+                'description' => 'Đại lý đăng ký kinh doanh',
+                'is_visible' => true,
+                'seo_title' => 'dang-ky-dai-ly-kinh-doanh',
+                'seo_description' => 'dang-ky-dai-ly-kinh-doanh',
+                'parent_id' => $spAgency->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Hỗ trợ kỹ thuật',
+                'slug' => 'ho-tro-ky-thuat',
+                'description' => 'Hỗ trợ kỹ thuật',
+                'is_visible' => true,
+                'seo_title' => 'ho-tro-ky-thuat',
+                'seo_description' => 'ho-tro-ky-thuat',
+                'parent_id' => $spAgency->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+        ]);
+
+        $spCustomer = Category::where('slug', 'ho-tro-khach-hang')->first();
+        DB::table('categories')->insert([
+            [
+                'name' => 'Hỗ trợ tư vấn sản phẩm và dịch vụ',
+                'slug' => 'ho-tro-tu-van-san-pham-va-dich-vu',
+                'description' => 'Hỗ trợ tư vấn sản phẩm và dịch vụ',
+                'is_visible' => true,
+                'seo_title' => 'ho-tro-tu-van-san-pham-va-dich-vu',
+                'seo_description' => 'ho-tro-tu-van-san-pham-va-dich-vu',
+                'parent_id' => $spCustomer->id,
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            ],
+            [
+                'name' => 'Giải quyết khiếu nại',
+                'slug' => 'giai-quyet-khieu-nai',
+                'description' => 'Giải quyết khiếu nại',
+                'is_visible' => true,
+                'seo_title' => 'giai-quyet-khieu-nai',
+                'seo_description' => 'giai-quyet-khieu-nai',
+                'parent_id' => $spCustomer->id,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ],
