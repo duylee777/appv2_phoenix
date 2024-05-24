@@ -52,7 +52,7 @@ Route::prefix('ho-tro')->group(function () {
     // Route::get('/ho-tro-tu-van-san-pham-va-dich-vu', [SupportController::class, 'supportAdvise'])->name('theme.support_advise');
     // Route::get('/giai-quyet-khieu-nai', [SupportController::class, 'resolveComplaints'])->name('theme.resolve_complaints');
     Route::get('/{slug_category?}', [SupportController::class, 'index'])->name('theme.support_index');
-    Route::get('/phan-mem-ho-tro/all', [SupportController::class, 'supportSoftware'])->name('theme.support_software');
+    Route::get('/phan-mem/vang-mixer', [SupportController::class, 'supportSoftware'])->name('theme.support_software');
 });
 // Route::get('/ho-tro', [HomeController::class, 'support'])->name('theme.support');
 

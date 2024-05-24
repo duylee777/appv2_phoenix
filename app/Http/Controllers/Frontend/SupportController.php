@@ -20,7 +20,15 @@ class SupportController extends Controller
     }
 
     public function supportSoftware() {
-        $products = Product::all();
+        $idCategories = [];
+        $categoryVangMixer = Category::where('slug', 'vang-mixer')->first();
+        array_push($idCategories, $categoryVangMixer->id);
+        if(count($categoryVangMixer->childs) != 0) {
+            foreach($categoryVangMixer->childs as $child) {
+                array_push($idCategories, $child->id);
+            }
+        }
+        $products = Product::whereIn('category_id', $idCategories)->orderBy('name', 'ASC')->get();
         return view('theme.support.support-software', compact('products'));
     }
 }
