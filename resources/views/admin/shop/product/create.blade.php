@@ -151,7 +151,7 @@
             </section>
             <div class="p-4 mb-4 grid gap-4 grid-cols-1 lg:grid-cols-2 bg-white shadow-md sm:rounded-lg">
                 <div class="col-span-2">
-                    <label for="" class="block mb-2 font-semibold text-gray-900">Hình ảnh thu nhỏ</label>
+                    <label for="" class="block mb-2 font-semibold text-gray-900">Ảnh bìa khi kích hoạt sản phẩm nổi bật</label>
                     <div class="p-4 flex flex-col lg:flex-row items-center gap-4 bg-white border border-gray-200 rounded-lg shadow">
                         <div class="w-24 h-24 overflow-hidden flex items-center justify-center rounded-md shadow">
                             <img id="thumbnails_image" class="w-full" src="https://images.pexels.com/photos/698275/pexels-photo-698275.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Extra large image">
@@ -188,26 +188,29 @@
                         <div class="col-span-2">
                             <label for="document" class="block mb-2 text-sm font-semibold text-gray-900">Tài liệu</label>
                             <ul id="list-document" class="py-2 flex flex-col gap-2"></ul>
+                            <span class="block text-sm text-gray-500 pb-2">Tải lên tài liệu (tệp .pdf, .docx)</span>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="document_file_input_help" name="" id="document_file_input" type="file" multiple>
-                            <p class="text-sm text-gray-500" id="document_file_input_help">.pdf, .docx</p>
-                            
+                            {{-- <p class="text-sm text-gray-500" id="document_file_input_help">.pdf, .docx</p> --}}
                         </div>
                     </div>
                     <div class="p-4 mb-4 grid gap-4 grid-cols-1 lg:grid-cols-2 bg-white shadow-md sm:rounded-lg">
                         <div class="col-span-2">
                             <label for="software" class="block mb-2 text-sm font-semibold text-gray-900">Phần mềm</label>
                             <ul id="list-software" class="py-2 flex flex-col gap-2"></ul>
+                            <span class="block text-sm text-gray-500 pb-2">Tải lên phần mềm (tệp .zip, .rar) nếu dung lượng nhỏ hơn 200MB</span>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="software_file_input_help" name="" id="software_file_input" type="file" multiple>
-                            <p class="text-sm text-gray-500" id="software_file_input_help">.zip, .rar</p>
-                            
+                            {{-- <span class="block text-sm text-gray-500 pt-4 pb-2">Dán đường dẫn Google Driver tại đây</span>
+                            <input type="text" name="software_url" placeholder="Dán đường dẫn tại đây ..." class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"> --}}
                         </div>
                     </div>
                     <div class="p-4 mb-4 grid gap-4 grid-cols-1 lg:grid-cols-2 bg-white shadow-md sm:rounded-lg">
                         <div class="col-span-2">
                             <label for="driver" class="block mb-2 text-sm font-semibold text-gray-900">Driver</label>
                             <ul id="list-driver" class="py-2 flex flex-col gap-2"></ul>
+                            <span class="block text-sm text-gray-500 pb-2">Tải lên driver (tệp .zip, .rar) nếu dung lượng nhỏ hơn 200MB</span>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none" aria-describedby="driver_file_input_help" name="" id="driver_file_input" type="file" multiple>
-                            <p class="text-sm text-gray-500" id="driver_file_input_help">.pdf, .docx</p>
+                            {{-- <span class="block text-sm text-gray-500 pt-4 pb-2">Dán đường dẫn Google Driver tại đây</span>
+                            <input type="text" name="driver_url" placeholder="Dán đường dẫn tại đây ..." class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"> --}}
                         </div>
                     </div>
                 </div>

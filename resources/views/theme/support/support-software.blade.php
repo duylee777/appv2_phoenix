@@ -113,10 +113,12 @@
                             @endif
                         </div>
                         <div class="download-btn-wrap">
-                            <a href="#" class="download-btn" target="_blank">
+                            @foreach((array)json_decode($product->software) as $software)
+                            <a href="{{ asset('storage/products/'.$product->code.'/software/'.$software) }}" class="download-btn" target="">
                                 <span><i class="fa-regular fa-circle-down"></i></span>
                                 <span>Tải về</span>
                             </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

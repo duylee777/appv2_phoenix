@@ -137,6 +137,13 @@ class ProductController extends Controller
                 }   
                 $dataNewProduct['document'] = json_encode($document);
 
+                // if($request->has('software_url')){
+                //     $dataNewProduct['software'] = json_encode($request->software_url);
+                // }
+                // else {
+                //     $dataNewProduct['software'] = json_encode("");
+                // }
+                
                 $software = [];
                 if($request->hasFile('software')) {
                     foreach($request->file('software') as $file) {
@@ -147,7 +154,15 @@ class ProductController extends Controller
                     }
                 }   
                 $dataNewProduct['software'] = json_encode($software);
+                
 
+                // if($request->has('driver_url')){
+                //     $dataNewProduct['driver'] = json_encode($request->driver_url);
+                // }
+                // else {
+                //     $dataNewProduct['driver'] = json_encode("");
+                // }
+                
                 $driver = [];
                 if($request->hasFile('driver')) {
                     foreach($request->file('driver') as $file) {
@@ -158,7 +173,8 @@ class ProductController extends Controller
                     }
                 }   
                 $dataNewProduct['driver'] = json_encode($driver);
-
+                
+                
                 $newInventory = Inventory::create(['quantity' => $request->inventory_count]);
                 $dataNewProduct['inventory_id'] = $newInventory->id;
                 
@@ -184,9 +200,10 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        $product = Product::where('id', $id)->first();
+        // var_dump($product);die;
+        // $product = Product::where('id', $id)->first();
         $brands = Brand::all();
         
         $cateIds = [];

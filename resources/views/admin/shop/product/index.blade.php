@@ -186,7 +186,6 @@
 
 <script>
     let row = document.querySelectorAll('.product-item');
-    console.log(row)
     let searchInput = document.getElementById('product-search');
 
     let code = document.querySelectorAll('.product-code');
