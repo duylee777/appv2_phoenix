@@ -137,6 +137,7 @@ class HomeController extends Controller
             "email" => $request->email,
             "phone" => $request->phone,
             "message" => $request->message,
+            "status" => config('global.contact_status.new'),
         ];
         Contact::create($contact);
         

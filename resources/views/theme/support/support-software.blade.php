@@ -31,7 +31,11 @@
         .containerx.wrap {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        .containerx.wrap .download {
+            flex-grow: 1;
         }
         .download-btn-wrap {
             display: flex;
@@ -81,7 +85,14 @@
                     <option id="option_all" value="all">Tất cả sản phẩm</option>
                     @if($products)
                         @foreach($products as $product)
-                            <option id="option_{{ $product->id }}" value="{{ $product->id }}" >{{ $product->name }}</option>
+                        @php 
+                            $softwares = (array)json_decode($product->software);
+                        @endphp
+                            @if(!empty($softwares))
+                                @if($softwares[0] != "")
+                                <option id="option_{{ $product->id }}" value="{{ $product->id }}" >{{ $product->name }}</option>
+                                @endif
+                            @endif
                         @endforeach
                     @endif
                 </select>
@@ -96,32 +107,39 @@
     <div class="containerx wrap">
         @if($products)
             @foreach($products as $product)
-                <div class="download show-all" id="{{$product->id}}">
-                    <h3 class="download__title">
-                        <span id="product_id_{{$product->id}}" class="product-code">{{ $product->code }}</span>
-                        <span class="product-name">{{ $product->name }}</span>
-                    </h3>
-                    
-                    <div class="download-wrap">
+            @php 
+                $softwares = (array)json_decode($product->software);
+            @endphp
+                @if(!empty($softwares))
+                    @if($softwares[0] != "")
+                    <div class="download show-all" id="{{$product->id}}">
+                        <h3 class="download__title">
+                            <span id="product_id_{{$product->id}}" class="product-code">{{ $product->code }}</span>
+                            <span class="product-name">{{ $product->name }}</span>
+                        </h3>
                         
-                        <div class="download__thumnail download__thumnail--grow">
-                            <?php $listImg = json_decode($product->image); ?>
-                            @if(!empty($listImg))
-                            <img src="{{ asset('storage/products/'.$product->code.'/image/'.$listImg[0]) }}" alt="{{ $product->name }}">
-                            @else
-                            <img id="" class="w-full" src="https://images.pexels.com/photos/4841450/pexels-photo-4841450.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Extra large image">
-                            @endif
-                        </div>
-                        <div class="download-btn-wrap">
-                            @foreach((array)json_decode($product->software) as $software)
-                            <a href="{{ asset('storage/products/'.$product->code.'/software/'.$software) }}" class="download-btn" target="">
-                                <span><i class="fa-regular fa-circle-down"></i></span>
-                                <span>Tải về</span>
-                            </a>
-                            @endforeach
+                        <div class="download-wrap">
+                            
+                            <div class="download__thumnail download__thumnail--grow">
+                                <?php $listImg = json_decode($product->image); ?>
+                                @if(!empty($listImg))
+                                <img src="{{ asset('storage/products/'.$product->code.'/image/'.$listImg[0]) }}" alt="{{ $product->name }}">
+                                @else
+                                <img id="" class="w-full" src="https://images.pexels.com/photos/4841450/pexels-photo-4841450.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Extra large image">
+                                @endif
+                            </div>
+                            <div class="download-btn-wrap">
+                                @foreach($softwares as $software)
+                                <a href="{{ asset('storage/products/'.$product->code.'/software/'.$software) }}" class="download-btn" target="">
+                                    <span><i class="fa-regular fa-circle-down"></i></span>
+                                    <span>Tải về</span>
+                                </a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
+                    @endif
+                @endif
             @endforeach
         @endif
     </div>

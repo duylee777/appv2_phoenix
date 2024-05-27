@@ -76,5 +76,16 @@
             'delete_post' => "Xóa bài viết",
         ],
 
+        'contact_permissions' => [
+            'view_contacts' => "Xem danh sách liên hệ",
+            'update_contact' => "Cập nhật trạng thái liên hệ",
+        ],
+
+        'contact_status' => [
+            'new' => 'Mới',
+            'unread' => 'Chưa đọc',
+            'read' => 'Đã đọc',
+        ],
+
     ];
 ?>

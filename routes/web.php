@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\InventoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\ContactController;
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\SearchController;
@@ -79,6 +80,8 @@ Route::middleware(['auth', 'accessAdminPanel'])->prefix('admin')->group(function
     Route::resource('/tag', TagController::class);
     Route::resource('/post', PostController::class);
     Route::resource('/agency', AgencyController::class);
+    Route::get('/contact', [ContactController::class, 'index'])->name('admin.contact');
+    Route::post('/contact', [ContactController::class, 'update'])->name('admin.contact.update');
     Route::prefix('/excel')->group(function() {
         Route::post('/import-products', [ExcelController::class, 'importProducts'])->name('admin.excel.import-products');
         Route::get('/export-products', [ExcelController::class, 'exportProducts'])->name('admin.excel.export-products');
