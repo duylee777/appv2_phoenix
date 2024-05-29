@@ -47,15 +47,9 @@ Route::get('/tin-tuc/{slug_news?}', [HomeController::class, 'newsDetail'])->name
 Route::get('/dai-ly', [HomeController::class, 'agency'])->name('theme.agency');
 Route::get('/dai-ly/{agency_slug?}', [HomeController::class, 'agencyDetail'])->name('theme.agency_detail');
 
-Route::prefix('ho-tro')->group(function () {
-    // Route::get('/dang-ky-dai-ly-kinh-doanh', [SupportController::class, 'registerAgency'])->name('theme.register_agency');
-    // Route::get('/ho-tro-ky-thuat', [SupportController::class, 'supportTech'])->name('theme.support_tech');
-    // Route::get('/ho-tro-tu-van-san-pham-va-dich-vu', [SupportController::class, 'supportAdvise'])->name('theme.support_advise');
-    // Route::get('/giai-quyet-khieu-nai', [SupportController::class, 'resolveComplaints'])->name('theme.resolve_complaints');
-    Route::get('/{slug_category?}', [SupportController::class, 'index'])->name('theme.support_index');
-    Route::get('/phan-mem/vang-mixer', [SupportController::class, 'supportSoftware'])->name('theme.support_software');
-});
-// Route::get('/ho-tro', [HomeController::class, 'support'])->name('theme.support');
+Route::get('/ho-tro/{slug_category?}', [SupportController::class, 'index'])->name('theme.support_index');
+Route::get('/dang-ky-dai-ly-kinh-doanh', [SupportController::class, 'registerAgency'])->name('theme.register_agency');
+Route::post('/dang-ky-dai-ly-kinh-doanh', [SupportController::class, 'registerAgencyPost'])->name('theme.register_agency_post');
 
 Route::get('/tai-ve', [HomeController::class, 'download'])->name('theme.download');
 Route::get('/lien-he', [HomeController::class, 'contact'])->name('theme.contact');

@@ -191,19 +191,19 @@
                                     @foreach($spChildCates as $cate)
                                     <div class="hook_submenu-v2">
                                         <div class="box__link">
-                                            @if($cate->slug == 'phan-mem-ho-tro')
-                                            <a href="{{ route('theme.support_software') }}" class="mainmenu__link submenu__link">{{ $cate->name }}</a>
-                                            @else
                                             <a class="mainmenu__link submenu__link">{{ $cate->name }}</a>
-                                            @endif
                                             @if(count($cate->childs) != 0)
-                                            <span><i class="fa-solid fa-angle-right"></i></span>
+                                                <span><i class="fa-solid fa-angle-right"></i></span>
                                             @endif
                                         </div>
                                         @if(count($cate->childs) != 0)
                                         <nav class="submenu-v2">
                                             @foreach($cate->childs as $child)
-                                            <a href="{{ route('theme.support_index', $child->slug) }}" class="mainmenu__link submenu__link">{{ $child->name }}</a>
+                                                @if($child->slug == 'dang-ky-dai-ly-kinh-doanh')
+                                                    <a href="{{ route('theme.register_agency') }}" class="mainmenu__link submenu__link">{{ $child->name }}</a>
+                                                @else
+                                                    <a href="{{ route('theme.support_index', $child->slug) }}" class="mainmenu__link submenu__link">{{ $child->name }}</a>
+                                                @endif
                                             @endforeach
                                         </nav>
                                         @endif
@@ -307,19 +307,19 @@
                             @foreach($spChildCates as $cate)
                             <div class="hook_submenu-v2">
                                 <div class="box__link">
-                                    @if($cate->slug == 'phan-mem-ho-tro')
-                                    <a href="{{ route('theme.support_software') }}" class="mainmenu__link submenu__link">{{ $cate->name }}</a>
-                                    @else
                                     <a class="mainmenu__link submenu__link">{{ $cate->name }}</a>
-                                    @endif
                                     @if(count($cate->childs) != 0)
-                                    <span><i class="fa-solid fa-angle-right"></i></span>
+                                        <span><i class="fa-solid fa-angle-right"></i></span>
                                     @endif
                                 </div>
                                 @if(count($cate->childs) != 0)
                                 <nav class="submenu-v2">
                                     @foreach($cate->childs as $child)
-                                    <a href="{{ route('theme.support_index', $child->slug) }}" class="mainmenu__link submenu__link">{{ $child->name }}</a>
+                                        @if($child->slug == 'dang-ky-dai-ly-kinh-doanh')
+                                            <a href="{{ route('theme.register_agency') }}" class="mainmenu__link submenu__link">{{ $child->name }}</a>
+                                        @else
+                                            <a href="{{ route('theme.support_index', $child->slug) }}" class="mainmenu__link submenu__link">{{ $child->name }}</a>
+                                        @endif
                                     @endforeach
                                 </nav>
                                 @endif
@@ -426,7 +426,11 @@
                                                     @foreach($cate->childs as $child)
                                                     <li class="sub-product-wrap">
                                                         <div class="m-sub-product">
-                                                            <a href="{{ route('theme.support_index', $child->slug) }}" class="m-product__link">{{ $child->name }}</a>
+                                                            @if($child->slug == 'dang-ky-dai-ly-kinh-doanh')
+                                                                <a href="{{ route('theme.register_agency') }}" class="m-product__link">{{ $child->name }}</a>
+                                                            @else
+                                                                <a href="{{ route('theme.support_index', $child->slug) }}" class="m-product__link">{{ $child->name }}</a>
+                                                            @endif
                                                         </div>
                                                     </li>
                                                     @endforeach
