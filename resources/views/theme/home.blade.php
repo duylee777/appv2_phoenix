@@ -4,7 +4,7 @@
 <section id="homebanner" class="homebanner">
     <div class="homebanner__mask">
         <video muted loop autoplay>
-            <source src="{{ asset('assets/theme/videos/bg_phoenix.mp4') }}" type="video/mp4">
+            <source src="{{ asset('assets/theme/videos/V_1.mp4') }}" type="video/mp4">
         </video>
     </div>
 </section>

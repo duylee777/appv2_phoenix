@@ -56,7 +56,7 @@
             <div class="overflow-x-auto">
                 <div class="flex flex-wrap items-center gap-4 justify-end px-4 mb-4">
                     <div class="grow">
-                        <label for="" class="text-xs font-semibold text-blue-400">Tìm kiếm tên, email, số điện thoại, ..</label>
+                        <label for="" class="text-xs font-semibold text-blue-400">Tìm kiếm tên khách hàng</label>
                         <div class="relative w-full"> 
                             <input type="text" id="keyword-search" name="keyword-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-4 p-2.5" placeholder="Nhập từ khóa ..." required value="{{$keyword == 'none' ? '' : $keyword }}" />
                         </div>
@@ -214,7 +214,8 @@ Form filter End
                 let data = {
                     id:  $(this).data('id'),
                     status: status,
-                    created: created
+                    created: $('#created').val(),
+                    keyword: $('#keyword').val()
                 }
 
                 $.ajax({

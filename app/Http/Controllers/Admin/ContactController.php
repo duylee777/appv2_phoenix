@@ -25,21 +25,69 @@ class ContactController extends Controller
 
         $page = $request->has('page') ? $request->page : 1;
         $soft = ($request->has('soft') && $request->soft != "all") ? $request->soft : 'all';
+       
         $created = $request->has('created') ? $request->created : 'all';
-        $keyword = $request->has('keyword') ? $request->keyword : '';
-
+        $keyword = $request->keyword != 'none' ? $request->keyword : '';
+        
+        $paginate = 12;
+       
         if(isset($soft) && $soft == 'new') {
-            $contacts = Contact::orderBy('created_at', 'DESC')->where('status', config('global.contact_status.new'))->paginate(12);
+            if($created != 'all') {
+                $contacts = Contact::orderBy('created_at', 'DESC')
+                ->where('status', config('global.contact_status.new'))
+                ->whereDate('created_at', '=', date('Y-m-d', strtotime($created)))
+                ->where("name", "like", "%$keyword%")
+                ->paginate($paginate);
+            }
+            else {
+                $contacts = Contact::orderBy('created_at', 'DESC')
+                ->where('status', config('global.contact_status.new'))
+                ->where("name", "like", "%$keyword%")
+                ->paginate($paginate);
+            }   
         }
         elseif(isset($soft) && $soft == 'unread') {
-            $contacts = Contact::orderBy('created_at', 'DESC')->where('status', config('global.contact_status.unread'))->paginate(12);
+            if($created != 'all') {
+                $contacts = Contact::orderBy('created_at', 'DESC')
+                ->where('status', config('global.contact_status.unread'))
+                ->whereDate('created_at', '=', date('Y-m-d', strtotime($created)))
+                ->where("name", "like", "%$keyword%")
+                ->paginate($paginate);
+            }
+            else {
+                $contacts = Contact::orderBy('created_at', 'DESC')
+                ->where('status', config('global.contact_status.unread'))
+                ->where("name", "like", "%$keyword%")
+                ->paginate($paginate);
+            }  
         }
         elseif(isset($soft) && $soft == 'read') {
-            $contacts = Contact::orderBy('created_at', 'DESC')->where('status', config('global.contact_status.read'))->paginate(12);
+            if($created != 'all') {
+                $contacts = Contact::orderBy('created_at', 'DESC')
+                ->where('status', config('global.contact_status.read'))
+                ->whereDate('created_at', '=', date('Y-m-d', strtotime($created)))
+                ->where("name", "like", "%$keyword%")
+                ->paginate($paginate);
+            }
+            else {
+                $contacts = Contact::orderBy('created_at', 'DESC')
+                ->where('status', config('global.contact_status.read'))
+                ->where("name", "like", "%$keyword%")
+                ->paginate($paginate);
+            }  
         }
         else {
-            $contacts = Contact::orderBy('created_at', 'DESC')->whereDate('created_at', '=', date('Y-m-d', strtotime($created)))->paginate(12);
-            var_dump($contacts);die;
+            if($created != 'all') {
+                $contacts = Contact::orderBy('created_at', 'DESC')
+                ->whereDate('created_at', '=', date('Y-m-d', strtotime($created)))
+                ->where("name", "like", "%$keyword%")
+                ->paginate($paginate);
+            }
+            else {
+                $contacts = Contact::orderBy('created_at', 'DESC')
+                ->where("name", "like", "%$keyword%")
+                ->paginate($paginate);
+            }
         }
         
         return view('admin.contact.index', compact('contacts', 'page', 'soft', 'created', 'keyword'));

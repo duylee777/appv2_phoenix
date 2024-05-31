@@ -412,11 +412,7 @@
                                             @foreach($spChildCates as $cate)
                                             <li class="m-product-wrap">
                                                 <div class="m-product">
-                                                    @if($cate->slug == 'phan-mem-ho-tro')
-                                                    <a href="{{ route('theme.support_software') }}" class="m-product__link">{{ $cate->name }}</a>
-                                                    @else
                                                     <a class="m-product__link">{{ $cate->name }}</a>
-                                                    @endif
                                                     @if(count($cate->childs) != 0)
                                                     <span class="m-support__btn-toggle"><i class="fa-solid fa-angle-down"></i></span>
                                                     @endif
