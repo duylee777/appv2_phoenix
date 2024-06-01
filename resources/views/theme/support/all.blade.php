@@ -3,7 +3,6 @@
     <!-- <link rel="stylesheet" href="{{ asset('./assets/theme/css/product-list.css') }}">
     <link rel="stylesheet" href="{{ asset('./assets/theme/css/breadcrumb.css') }}"> -->
     <link rel="stylesheet" href="/assets/theme/css/product-list.css">
-    <link rel="stylesheet" href="/assets/theme/css/contact.css">
     <link rel="stylesheet" href="/assets/theme/css/breadcrumb.css">
     <style>
         .category-list-wrap{
@@ -12,7 +11,6 @@
         }
         .list-brands {
             padding-left: 1rem;
-            flex-grow: 1;
         }
         .cate-wrap {
             list-style-type: none;
@@ -52,10 +50,6 @@
         .category-by-product-wrap {
             min-width: 280px !important;
         }
-        .contactpage-form-wrap {
-            width: 100%;
-            margin-top: 1rem;
-        }
         @media screen and (max-width: 576px) {
             .category-list-wrap{
                 flex-direction: column;
@@ -69,14 +63,14 @@
         }
     </style>
 @endpush
-@section('title','Đăng ký đại lý kinh doanh')
+@section('title','Hỗ trợ')
 @section('content')
 <section class="cushion-layer"></section>
 <section class="breadcrumb-area">
     <div class="breadcrumb containerx">
         <a href="{{route('theme.home')}}">Trang chủ</a>
         <span>&gt;</span>
-        <span>Đăng ký đại lý kinh doanh</span>
+        <span>Hỗ trợ</span>
     </div>
 </section>
 <section class="category-list">
@@ -86,7 +80,7 @@
             <ul class="cate-wrap">
                 <li class="cate-item">
                     <div class="cate-item-btn">
-                        <a href="{{ route('theme.support_all') }}" id="all" class="cate-link">Hỗ trợ</a>
+                        <a href="{{ route('theme.support_all') }}" id="all" class="cate-link cate-link--active">Hỗ trợ</a>
                     </div>
                 </li>
                 @foreach($categories as $cate)
@@ -102,11 +96,7 @@
                                     @if($cate2->slug == 'dang-ky-dai-ly-kinh-doanh')
                                         <a href="{{ route('theme.register_agency') }}" id="{{ $cate2->id }}" class="cate-link">{{ $cate2->name }}</a>
                                     @else
-                                        @if($cate2->id == $post->category_id)
-                                            <a href="{{ route('theme.support_index', $cate2->slug) }}" id="{{ $cate2->id }}" class="cate-link cate-link--active">{{ $cate2->name }}</a>
-                                        @else
-                                            <a href="{{ route('theme.support_index', $cate2->slug) }}" id="{{ $cate2->id }}" class="cate-link">{{ $cate2->name }}</a>
-                                        @endif
+                                        <a href="{{ route('theme.support_index', $cate2->slug) }}" id="{{ $cate2->id }}" class="cate-link">{{ $cate2->name }}</a>
                                     @endif
                                     
                                 </div>
@@ -121,62 +111,12 @@
         </div>
         
         <div class="list-brands">
-            <div class="contactpage-form-wrap">
-                <?= $post->detail ?>
-            </div>
-            
+            <?= $postHoTro->detail ?>
         </div>
     </div>
 </section>
 
 @endsection
-{{-- @extends('theme.layouts.index')
-@push('styles')
-    <!-- <link rel="stylesheet" href="{{ asset('./assets/theme/css/blog.css') }}">
-    <link rel="stylesheet" href="{{ asset('./assets/theme/css/breadcrumb.css') }}"> -->
-    <link rel="stylesheet" href="/assets/theme/css/blog.css">
-    <link rel="stylesheet" href="/assets/theme/css/breadcrumb.css">
-@endpush
-@section('title','Hỗ trợ')
-@section('content')
-<section class="cushion-layer"></section>
-<section class="breadcrumb-area">
-    <div class="breadcrumb containerx">
-        <a href="{{route('theme.home')}}">Trang chủ</a>
-        <span>&gt;</span>
-        <a href="#">Hỗ trợ</a>
-        <span>&gt;</span>
-        <span>{{ $post->title }}</span>
-    </div>
-</section>
-<section class="s-area blogpage-area">
-    <div class="s-header containerx">
-        <div class="inner-link">
-            @foreach($post->tags as $tag)
-                <a href="">{{ $tag->name }}</a>
-            @endforeach
-        </div>
-        <h1 class="s-header__title">{{ $post->title }}</h1>
-    </div>
-    <div class="s-main blogpage-wrap">
-        <div class="m-news containerx">
-            <div class="post-news">
-                {!! $post->detail !!}
-            </div>
-            <div class="lists-news">
-                <h4 class="head-more-news">{{ $parentCate->name }}</h4>
-                @foreach($otherCategorys as $cate)
-                    
-                    <div class="more-news">
-                        <a href="{{ route('theme.support_index', $cate->slug) }}" class="entry-title">
-                            <h4>{{ $cate->name }}</h4>
-                        </a>
-                    </div>
-                    
-                @endforeach
-            </div>
-        </div>
-    </div>
-</section>
 
-@endsection --}}
+
+

@@ -10,7 +10,7 @@
             align-items: flex-start;
         }
         .list-brands {
-            padding: 1rem;
+            padding-left: 1rem;
         }
         .e-show {
             display: block;
@@ -42,7 +42,9 @@
             padding-left: 1.5rem;
         }
         .cate-link--active {
-            color: var(--color__base);
+            background: var(--color__base) !important;
+            color: white;
+            padding-left: 8px !important;
         }
         @media screen and (max-width: 576px) {
             .category-list-wrap{
@@ -57,21 +59,16 @@
         }
     </style>
 @endpush
-@section('title','Danh sách sản phẩm theo thương hiệu')
+@section('title','Sản phẩm mới')
 @section('content')
 <section class="cushion-layer"></section>
 <section class="breadcrumb-area">
     <div class="breadcrumb containerx">
         <a href="{{route('theme.home')}}">Trang chủ</a>
         <span>&gt;</span>
-        <span>{{ $brand->name }}</span>
+        <span>Sản phẩm mới</span>
     </div>
 </section>
-{{-- <section class="s-area">
-    <div class="s-header containerx">
-        <h2 class="s-header__title">{{ $brand->name }}</h2>
-    </div>
-</section> --}}
 <section class="category-list">
     <div class="containerx category-list-wrap">
         <div class="category-by-product-wrap">
@@ -110,8 +107,8 @@
         </div>
         
         <div class="list list-brands">
-            @if(count($listProductByBrand) > 0)
-                @foreach($listProductByBrand as $product)
+            @if(count($newProducts) > 0)
+                @foreach($newProducts as $product)
                     @if($product->is_active == true)
                     <div class="list-item e-show" data-cateid="cate_{{$product->category->id}}">
                         <div class="list-item-thumnail">

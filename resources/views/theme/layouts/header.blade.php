@@ -24,7 +24,7 @@
         gap: 1rem;
     }
     .v2h_trademark {
-        width: 6rem;
+        width: 10rem;
     }
     .v2h_content {
         flex-grow: 1;
@@ -49,14 +49,16 @@
         width: 100%;
     }
     .v2h_toggle-menu {
-        width: 12rem;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
+        width: 10rem;
+        /* margin-top: 12px; */
+        margin-bottom: 8px;
     }
     .header-area {
         display: none;
     }
-
+    /* .trademark__link {
+        margin-top: -8px;
+    } */
     .hook_submenu {
         position: relative;
     }
@@ -148,6 +150,7 @@
             display: flex;
             justify-content: flex-end;
             padding-bottom: 1rem;
+            gap: 4px
         }
     }
     @media screen and (min-width: 1920px) {
@@ -163,13 +166,20 @@
     <section id="header-v2">
         <div class="display-pc">
             <div class="containerx v2h_wrap">
-                <div class="v2h_trademark">
+                {{-- <div class="v2h_trademark">
                     <a href="/" class="trademark__link">
                         <div class="trademark__logo">
-                                <!-- <img src="assets/imgs/brands/phoenix.png" alt=""> -->
                                 <img src="{{ asset('assets/theme/imgs/logo/phoenixaudio_logo.png') }}" alt="">
                         </div>
                     </a>
+                </div> --}}
+                <div class="v2h_trademark">
+                    <a href="/" class="trademark__link">
+                        <img src="{{ asset('assets/theme/imgs/logo/phoenix-logo.webp') }}" alt="">
+                    </a>
+                    <div class="toggle-menu v2h_toggle-menu">
+                        <button id="toggleMenuBtn"><i class="fa-solid fa-bars-staggered"></i> <span>sản phẩm</span></button>
+                    </div>
                 </div>
                 <div class="v2h_content">
                     <div class="v2h_line1">
@@ -184,7 +194,7 @@
                             @endphp
                             <div class="hook_submenu">
                                 <div class="box__link">
-                                    <a href="#" class="mainmenu__link">Hỗ trợ</a>
+                                    <a href="{{ route('theme.support_all')}}" class="mainmenu__link">Hỗ trợ</a>
                                     <span><i class="fa-solid fa-angle-down"></i></span>
                                 </div>
                                 <nav class="submenu">
@@ -248,9 +258,7 @@
             </div>
         </div>
         <div class="v2h_category">
-            <div class="containerx toggle-menu v2h_toggle-menu">
-                <button id="toggleMenuBtn"><i class="fa-solid fa-bars-staggered"></i> <span>sản phẩm</span></button>
-            </div>
+            
             <div class="product-portfolio-toggle">
                 <ul class="product-portfolio">
                 
@@ -287,10 +295,10 @@
             <div class="header-wrap">
                 <div class="trademark">
                     <a href="/" class="trademark__link">
-                        <div class="trademark__logo">
-                                <!-- <img src="assets/imgs/brands/phoenix.png" alt=""> -->
+                        {{-- <div class="trademark__logo">
                                 <img src="{{ asset('assets/theme/imgs/logo/phoenixaudio_logo.png') }}" alt="">
-                        </div>
+                        </div> --}}
+                        <img src="{{ asset('assets/theme/imgs/logo/phoenix-logo.webp') }}" alt="">
                     </a>
                 </div>
                 <nav class="mainmenu">
@@ -300,7 +308,7 @@
                     <a href="{{ route('theme.agency') }}" class="mainmenu__link">Đại lý</a>
                     <div class="hook_submenu">
                         <div class="box__link">
-                            <a href="#" class="mainmenu__link">Hỗ trợ</a>
+                            <a href="{{ route('theme.support_all')}}" class="mainmenu__link">Hỗ trợ</a>
                             <span><i class="fa-solid fa-angle-down"></i></span>
                         </div>
                         <nav class="submenu">
@@ -330,12 +338,12 @@
                     <a href="{{ route('theme.download') }}" class="mainmenu__link">Tải về</a>
                     <a href="{{ route('theme.contact') }}" class="mainmenu__link">Liên hệ</a>
                 </nav>
-                <div class="searchbar">
+                {{-- <div class="searchbar">
                     <form method="GET" action="{{ route('theme.search') }}">
                         <input type="text" name="keyword" placeholder="Nhập từ khóa bạn muốn tìm kiếm ...">
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
-                </div>
+                </div> --}}
                 <div class="morewrap">
                     <div class="dropdown">
                         <button class="morewrap__btn dropdown-btn"><i class="fa-solid fa-globe"></i></button>
@@ -359,12 +367,22 @@
                         <div class="offcanvas-body">
                             <div class="m-product-portfolio-wrap">
                                 <div class="dropdown_m_wrap">
+                                    <span style="color: white;">Ngôn ngữ</span>
                                     <div class="dropdown dropdown_m">
                                         <button class="morewrap__btn dropdown-btn"><i class="fa-solid fa-globe"></i></button>
                                         <div class="gtranslate_wrapper dropdown-menu"></div>
                                     </div>
                                 </div>
-                                <button id="toggleMenuMobileBtn"><i class="fa-solid fa-bars-staggered"></i> <span>sản phẩm</span><i class="fa-solid fa-chevron-down"></i></button>
+                                <div class="searchbar" style="width: 100%;">
+                                    <form method="GET" action="{{ route('theme.search') }}">
+                                        <input type="text" name="keyword" placeholder="Nhập từ khóa bạn muốn tìm kiếm ..." style="width: 100%;">
+                                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    </form>
+                                </div>
+                                <button id="toggleMenuMobileBtn">
+                                    <span><i class="fa-solid fa-bars-staggered"></i> sản phẩm</span>
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
                                 <div class="m-product-portfolio-toggle">
                                     @if(App\Models\Category::get() != null)
                                         <ul class="m-product-portfolio">
@@ -403,10 +421,14 @@
                                 <a href="{{ route('theme.news') }}" class="mainmenu__link m-mainmenu__link">Tin tức</a>
                                 <a href="{{ route('theme.agency') }}" class="mainmenu__link m-mainmenu__link">Đại lý</a>
                                 <div class="">
-                                    <a id="toggleSupport" class="mainmenu__link m-mainmenu__link dropdown-btn item__flex">
-                                        <span>Hỗ trợ</span>
-                                        <i class="fa-solid fa-chevron-down"></i>
-                                    </a>
+                                    <div class="" style="display: flex; align-items: center; justify-content: space-between;">
+                                        <a href="{{ route('theme.support_all')}}" class="mainmenu__link m-mainmenu__link dropdown-btn item__flex" style="flex-grow: 1;">
+                                            <span>Hỗ trợ</span>
+                                        </a>
+                                        <a id="toggleSupport" class="mainmenu__link m-mainmenu__link dropdown-btn item__flex">
+                                            <span><i class="fa-solid fa-chevron-down"></i></span>
+                                        </a>
+                                    </div>
                                     <div class="m-support-toggle">
                                         <ul class="m-support-portfolio">
                                             @foreach($spChildCates as $cate)

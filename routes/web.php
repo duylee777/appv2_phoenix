@@ -37,9 +37,15 @@ use App\Http\Controllers\Frontend\SupportController;
 //     return view('welcome');
 // });
 Route::get('/', [HomeController::class, 'home'])->name('theme.home');
+
 Route::get('/gioi-thieu', [HomeController::class, 'about'])->name('theme.about');
+Route::get('/gioi-thieu/{slug_post_about?}', [HomeController::class, 'postAbout'])->name('theme.post_about');
+
 Route::get('/danh-muc/{slug_category?}', [HomeController::class, 'category'])->name('theme.category');
+
+Route::get('/san-pham-noi-bat', [HomeController::class, 'newProducts'])->name('theme.new_products');
 Route::get('/san-pham/{slug_category}/{slug_product?}', [HomeController::class, 'productDetail'])->name('theme.product_detail');
+
 Route::get('/du-an', [HomeController::class, 'project'])->name('theme.project');
 Route::get('/du-an/{slug_project?}', [HomeController::class, 'projectDetail'])->name('theme.project_detail');
 Route::get('/tin-tuc', [HomeController::class, 'news'])->name('theme.news');
@@ -47,6 +53,7 @@ Route::get('/tin-tuc/{slug_news?}', [HomeController::class, 'newsDetail'])->name
 Route::get('/dai-ly', [HomeController::class, 'agency'])->name('theme.agency');
 Route::get('/dai-ly/{agency_slug?}', [HomeController::class, 'agencyDetail'])->name('theme.agency_detail');
 
+Route::get('/ho-tro', [SupportController::class, 'support'])->name('theme.support_all');
 Route::get('/ho-tro/{slug_category?}', [SupportController::class, 'index'])->name('theme.support_index');
 Route::get('/dang-ky-dai-ly-kinh-doanh', [SupportController::class, 'registerAgency'])->name('theme.register_agency');
 Route::post('/dang-ky-dai-ly-kinh-doanh', [SupportController::class, 'registerAgencyPost'])->name('theme.register_agency_post');

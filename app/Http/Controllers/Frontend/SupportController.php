@@ -15,16 +15,27 @@ use App\Models\RegisterAgency;
 class SupportController extends Controller
 {
 
+    public function support() {
+        $cateHoTro = Category::where('slug', 'ho-tro')->first();
+        $categories = Category::where('is_visible', true)->where('parent_id', $cateHoTro->id)->get();
+        $postHoTro = Post::where('is_visible', true)->where('slug', 'phoenix-ho-tro')->first();
+        return view('theme.support.all', compact('categories', 'postHoTro'));
+    }
+
     public function index($slug_category) {
         $category = Category::where('slug', $slug_category)->first();
         $post = Post::where('category_id', $category->id)->first();
-        $parentCate = Category::where('id', $category->parent_id)->first();
-        $otherCategorys = Category::where('parent_id', $parentCate->id)->get();
-        return view('theme.support.index', compact('post', 'parentCate', 'otherCategorys'));
+        $cateHoTro = Category::where('slug', 'ho-tro')->first();
+        $categories = Category::where('is_visible', true)->where('parent_id', $cateHoTro->id)->get();
+        // $parentCate = Category::where('id', $category->parent_id)->first();
+        // $otherCategorys = Category::where('parent_id', $parentCate->id)->get();
+        return view('theme.support.index', compact('post', 'categories'));
     }
 
     public function registerAgency() {
-        return view('theme.support.register-agency');
+        $cateHoTro = Category::where('slug', 'ho-tro')->first();
+        $categories = Category::where('is_visible', true)->where('parent_id', $cateHoTro->id)->get();
+        return view('theme.support.register-agency', compact('categories'));
     }
 
     public function registerAgencyPost(Request $request) {

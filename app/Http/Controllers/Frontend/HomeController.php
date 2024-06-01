@@ -29,8 +29,20 @@ class HomeController extends Controller
 
     public function about(){
         $about = Post::where('slug', 've-chung-toi')->first();
-        return view('theme.about', compact('about'));
+
+        $cate = Category::where('slug', 'gioi-thieu')->first();
+        $postAbouts = Post::where('category_id', $cate->id)->get();
+        return view('theme.about.about', compact('about', 'postAbouts'));
     }
+    public function postAbout($slug_post_about){
+        $postAbout = Post::where('slug', $slug_post_about)->first();
+
+        $cate = Category::where('slug', 'gioi-thieu')->first();
+        $postAbouts = Post::where('category_id', $cate->id)->get();
+
+        return view('theme.about.post-about', compact('postAbout', 'postAbouts'));
+    }
+
     public function category($slug_category) {
         $dataView = [];
         $category = Category::where('slug', $slug_category)->first();
@@ -38,6 +50,13 @@ class HomeController extends Controller
         $dataView['category'] = $category;
         $dataView['listProduct'] = $listProduct;
         return view('theme.category', $dataView);
+    }
+
+    public function newProducts() {
+        $newProducts = Product::where('is_active', true)->where('is_featured', true)->orderBy('category_id', 'ASC')->orderBy('name', 'ASC')->get();
+        $cateSanPham = Category::where('slug', 'san-pham')->first();
+        $categories = Category::where('is_visible', true)->where('parent_id', $cateSanPham->id)->get();
+        return view('theme.product.new-product', compact('newProducts', 'categories'));
     }
 
     public function productDetail($slug_category, $slug_product) {

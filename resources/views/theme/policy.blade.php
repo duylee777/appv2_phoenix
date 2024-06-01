@@ -18,25 +18,15 @@
     </div>
 </section>
 <section class="s-area blogpage-area">
-    <div class="s-header containerx">
-        <div class="inner-link">
-            @foreach($post->tags as $tag)
-                <a href="">{{ $tag->name }}</a>
-            @endforeach
-        </div>
-        <h1 class="s-header__title">{{ $post->title }}</h1>
-    </div>
     <div class="s-main blogpage-wrap">
         <div class="m-news containerx">
-            <div class="post-news">
-                {!! $post->detail !!}
-            </div>
             <div class="lists-news">
-                <h4 class="head-more-news">Chính sách khác</h4>
+                {{-- <h4 class="head-more-news">Chính sách khác</h4> --}}
                 @php
                     $policyCat = App\Models\Category::where('slug', "quy-dinh-va-chinh-sach")->first();
                     $policies = App\Models\Post::where('category_id', $policyCat->id)->orderBy('id', 'ASC')->get();
                 @endphp
+                
                 @foreach($policies as $policy)
                     @if($policy->slug != $post->slug)
                     <div class="more-news">
@@ -46,6 +36,17 @@
                     </div>
                     @endif
                 @endforeach
+            </div>
+            <div class="post-news">
+                <div class="s-header" style="margin-bottom: 1rem;">
+                    {{-- <div class="inner-link">
+                        @foreach($post->tags as $tag)
+                            <a href="">{{ $tag->name }}</a>
+                        @endforeach
+                    </div> --}}
+                    <h1 class="s-header__title">{{ $post->title }}</h1>
+                </div>
+                {!! $post->detail !!}
             </div>
         </div>
     </div>

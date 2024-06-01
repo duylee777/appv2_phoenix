@@ -3,6 +3,7 @@
     <!-- <link rel="stylesheet" href="{{ asset('./assets/theme/css/agency.css') }}">
     <link rel="stylesheet" href="{{ asset('./assets/theme/css/product.css') }}">
     <link rel="stylesheet" href="{{ asset('./assets/theme/css/breadcrumb.css') }}"> -->
+    <link rel="stylesheet" href="/assets/theme/css/index.css">
     <link rel="stylesheet" href="/assets/theme/css/agency.css">
     <link rel="stylesheet" href="/assets/theme/css/product.css">
     <link rel="stylesheet" href="/assets/theme/css/breadcrumb.css">
@@ -29,14 +30,16 @@
             grid-template-columns: auto auto;
         }
         .containerx.wrap {
-            display: flex;
+            /* display: flex;
             flex-wrap: wrap;
-            justify-content: flex-end;
+            justify-content: flex-end; */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
             gap: 1rem;
         }
-        .containerx.wrap .download {
+        /* .containerx.wrap .download {
             flex-grow: 1;
-        }
+        } */
         .download-btn-wrap {
             display: flex;
             flex-direction: column;
@@ -56,6 +59,11 @@
         .download-btn:hover {
             background: var(--color__base--hover);
             color: white;
+        }
+        .download__thumnail {
+            width: auto;
+            height: auto;
+            margin-bottom: 1rem;
         }
     </style>
 @endpush
@@ -114,28 +122,26 @@
                     @if($softwares[0] != "")
                     <div class="download show-all" id="{{$product->id}}">
                         <h3 class="download__title">
-                            <span id="product_id_{{$product->id}}" class="product-code">{{ $product->code }}</span>
+                            {{-- <span id="product_id_{{$product->id}}" class="product-code">{{ $product->code }}</span> --}}
                             <span class="product-name">{{ $product->name }}</span>
                         </h3>
                         
-                        <div class="download-wrap">
-                            
-                            <div class="download__thumnail download__thumnail--grow">
-                                <?php $listImg = json_decode($product->image); ?>
-                                @if(!empty($listImg))
+                        {{-- <div class="download-wrap"></div> --}}
+                        <div class="download__thumnail download__thumnail--grow">
+                            <?php $listImg = json_decode($product->image); ?>
+                            @if(!empty($listImg))
                                 <img src="{{ asset('storage/products/'.$product->code.'/image/'.$listImg[0]) }}" alt="{{ $product->name }}">
-                                @else
+                            @else
                                 <img id="" class="w-full" src="https://images.pexels.com/photos/4841450/pexels-photo-4841450.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Extra large image">
-                                @endif
-                            </div>
-                            <div class="download-btn-wrap">
-                                @foreach($softwares as $software)
-                                <a href="{{ asset('storage/products/'.$product->code.'/software/'.$software) }}" class="download-btn" target="">
-                                    <span><i class="fa-regular fa-circle-down"></i></span>
-                                    <span>Tải về</span>
-                                </a>
-                                @endforeach
-                            </div>
+                            @endif
+                        </div>
+                        <div class="download-btn-wrap">
+                            @foreach($softwares as $software)
+                            <a href="{{ asset('storage/products/'.$product->code.'/software/'.$software) }}" class="download-btn" target="">
+                                <span><i class="fa-regular fa-circle-down"></i></span>
+                                <span>Tải về</span>
+                            </a>
+                            @endforeach
                         </div>
                     </div>
                     @endif

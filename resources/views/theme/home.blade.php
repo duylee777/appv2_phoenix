@@ -10,6 +10,17 @@
 </section>
 @endsection
 @section('content')
+<style>
+    .content-product {
+        background: var(--color__base);
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .content-product__title {
+        margin: 0;
+        color: white;
+    }
+</style>
 <section class="featured-product-area">
     <div class="featured-product-wrap containerx">
         <div class="category-by-product-wrap">
@@ -66,34 +77,37 @@
 </section>
 <section class="blog-area">
     <div class="s-header">
-        <h2 class="s-header__title">Dự án</h2>
+        <h2 class="s-header__title">Sản phẩm nổi bật</h2>
     </div>
     <div class="s-main list-news containerx">
-        @foreach($projects as $project)
-        @php
-            $link = asset('storage/posts/'.$project->id.'/'.$project->cover_image);
-        @endphp
-        <div class="project-item">
-            <span class="project--attack"><i class="fa-regular fa-circle"></i></span>
-            <div class="project-item-wrap">
-                <h3 class="project-item__title">{{ $project->title }}</h3>
-                <div class="project-item__thumnail">
-                    <img src="{{$link}}" alt="">
+        @foreach($products->take(4) as $product)
+            @php 
+                $img = json_decode($product->image);
+            @endphp
+            <div class="news-item">
+                <div class="news__thumnail">
+                    <img src="{{ asset('storage/products/'.$product->code.'/image/'.$img[0]) }}" alt="{{ $product->name }}">
                 </div>
-                <div class="project-item__link-wrap">
-                    <a href="{{ route('theme.project_detail', $project->slug) }}" class="project-item__link">Xem dự án <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="coating">
+                    <div class="content-news content-product">
+                        <a href="{{ route('theme.product_detail', ['slug_category' => $product->category->slug, 'slug_product' => $product->slug]) }}" class="content-news__title content-product__title">
+                            {{ $product->name }}
+                        </a>
+                    </div>
                 </div>
+                {{-- <div class="content-news__link">
+                    <a href="{{ route('theme.product_detail', ['slug_category' => $product->category->slug, 'slug_product' => $product->slug]) }}"><span>Chi tiết <i class="fa-solid fa-arrow-right"></i></span></a>
+                </div> --}}
             </div>
-        </div>
         @endforeach
     </div>
     <div class="" style="text-align: center; margin-top: 1rem;">
-        <a href="{{ route('theme.project') }}" class="inner-about">Xem tất cả ...</a>
+        <a href="{{ route('theme.new_products') }}" class="inner-about">Xem tất cả ...</a>
     </div>
 </section>
 <section class="blog-area">
     <div class="s-header">
-        <h2 class="s-header__title">Bài viết mới</h2>
+        <h2 class="s-header__title">Tin tức</h2>
     </div>
     <div class="s-main list-news containerx">
         @foreach($news as $newsItem)
@@ -122,4 +136,32 @@
         <a href="{{ route('theme.news') }}" class="inner-about">Xem tất cả ...</a>
     </div>
 </section>
+<section class="blog-area">
+    <div class="s-header">
+        <h2 class="s-header__title">Dự án</h2>
+    </div>
+    <div class="s-main list-news containerx">
+        @foreach($projects as $project)
+        @php
+            $link = asset('storage/posts/'.$project->id.'/'.$project->cover_image);
+        @endphp
+        <div class="project-item">
+            <span class="project--attack"><i class="fa-regular fa-circle"></i></span>
+            <div class="project-item-wrap">
+                <h3 class="project-item__title">{{ $project->title }}</h3>
+                <div class="project-item__thumnail">
+                    <img src="{{$link}}" alt="">
+                </div>
+                <div class="project-item__link-wrap">
+                    <a href="{{ route('theme.project_detail', $project->slug) }}" class="project-item__link">Xem dự án <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="" style="text-align: center; margin-top: 1rem;">
+        <a href="{{ route('theme.project') }}" class="inner-about">Xem tất cả ...</a>
+    </div>
+</section>
+
 @endsection
