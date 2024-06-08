@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\SupportController;
+use App\Http\Controllers\Frontend\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,11 @@ use App\Http\Controllers\Frontend\SupportController;
 Route::get('/', [HomeController::class, 'home'])->name('theme.home');
 
 Route::get('/gioi-thieu', [HomeController::class, 'about'])->name('theme.about');
-Route::get('/gioi-thieu/{slug_post_about?}', [HomeController::class, 'postAbout'])->name('theme.post_about');
+// Route::get('/gioi-thieu/{slug_post_about?}', [HomeController::class, 'postAbout'])->name('theme.post_about');
+Route::get('/ve-phoenix', [AboutController::class, 'aboutPhoenix'])->name('theme.about_phoenix');
+Route::get('/doi-ngu-lanh-dao', [AboutController::class, 'aboutCeo'])->name('theme.about_ceo');
+Route::get('/lich-su-hinh-thanh', [AboutController::class, 'aboutHistory'])->name('theme.about_history');
+Route::get('/doi-tac', [AboutController::class, 'aboutCoop'])->name('theme.about_coop');
 
 Route::get('/danh-muc/{slug_category?}', [HomeController::class, 'category'])->name('theme.category');
 

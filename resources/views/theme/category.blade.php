@@ -47,6 +47,21 @@
         @endif
     </div>
 </section>
+<script>
+    let w = document.querySelector('.list')
+    let i = document.querySelectorAll('.list-item')
+    
+    let widthList = w.offsetWidth
+    let widthItem = i[0].offsetWidth
+    let countItem = i.length
+    let rowWidth = (countItem - 1) * 16
+    
+    let marginValue = (widthList - (countItem * widthItem) - rowWidth)
+    if(marginValue >= widthItem) {
+         w.style.marginLeft = (marginValue/2) + "px"
+         w.style.marginRight = (marginValue/2) + "px"
+    }
+</script>
 @endsection
 
 
