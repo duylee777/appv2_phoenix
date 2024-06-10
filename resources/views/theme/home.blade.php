@@ -4,6 +4,8 @@
 <section id="homebanner" class="homebanner">
     <div class="homebanner__mask">
         <video muted loop autoplay>
+            <source src="{{ asset('assets/theme/videos/V_1.hevc.mp4') }}" type="video/mp4" codecs="hvc1">
+            <source src="{{ asset('assets/theme/videos/V_1.webm') }}" type="video/webm">
             <source src="{{ asset('assets/theme/videos/V_1.mp4') }}" type="video/mp4">
         </video>
     </div>

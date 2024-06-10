@@ -27,7 +27,11 @@
         <div class="list-item">
             <div class="list-item-thumnail">
                 <?php $listImg = json_decode($product->image);  ?>
+                @if(!empty($listImg))
                 <img src="{{ asset('storage/products/'.$product->code.'/image/'.$listImg[0]) }}" alt="{{ $product->name }}">
+                @else
+                <img src="https://images.pexels.com/photos/4841450/pexels-photo-4841450.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="{{ $product->name }}">
+                @endif
             </div>
             <h5 class="list-item__name">{{ $product->name }}</h5>
             <a href="{{ route('theme.product_detail',['slug_category' => $product->category->slug, 'slug_product' => $product->slug]) }}" class="list-item__link"></a>

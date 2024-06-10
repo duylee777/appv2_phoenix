@@ -128,7 +128,7 @@
                     <div class="" style="width: 50%; padding-left: 2.5rem;">
                         <h2 style="text-align: center">Tầm nhìn chiến lược</h2>
                         <p style="margin-top: 2rem; text-align: justify;">
-                            Phoenix theo đuổi mục tiêu trở thành nhà cung cấp thiết bị âm thanh top 5 của thị trường Việt Nam tới năm 2025. Tầm nhìn 2023 công ty sẽ trở thành đơn vị cung cấp âm thanh cho thị trường Đông Nam Á
+                            Phoenix theo đuổi mục tiêu trở thành nhà cung cấp thiết bị âm thanh top 5 của thị trường Việt Nam tới năm 2025. Tầm nhìn 2030 công ty sẽ trở thành đơn vị cung cấp âm thanh cho thị trường Đông Nam Á
                         </p>
                     </div>
                 </div>
